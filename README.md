@@ -22,4 +22,3 @@ Variable            | Default                        | Description
 ```
 docker build -t paloalto-probe . --no-cache
 ```
-# paloalto-probe
