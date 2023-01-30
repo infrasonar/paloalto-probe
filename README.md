@@ -18,7 +18,7 @@ Variable            | Default                        | Description
 `LOG_FTM`           | `%y%m%d %H:%M:%S`              | Log format prefix.
 
 ## API key
-This probe requires an [API key](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/get-your-api-key#idca192ed7-45df-4992-a0f7-41ebe94fbdac) which must be placed in the `INFRASONAR_CONF` configuration file. For example:
+This probe requires an [API key](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/get-your-api-key) which must be placed in the `INFRASONAR_CONF` configuration file. For example:
 
 ```yaml
 paloalto:
