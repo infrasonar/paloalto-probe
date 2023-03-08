@@ -15,21 +15,19 @@ async def query(
         address = asset.name
     assert asset_config, 'missing credentials'
     api_key = asset_config['secret']
-
-    url_params = urlencode({
-        'type': 'op',
-        'cmd': cmd,
-        'key': api_key,
-    })
-    url = f'https://{address}/api/{url_params}'
+    headers = {
+        'X-PAN-KEY': api_key,
+    }
+    url = f'https://{address}/api/?type=op&cmd={cmd}'
 
     async with aiohttp.ClientSession() as session:
-        async with session.post(url, ssl=False) as resp:
-            resp.raise_for_status()
+        async with session.post(url, headers=headers, ssl=False) as resp:
+            assert resp.status // 100 == 2, \
+                f'response status code: {resp.status}. reason: {resp.reason}.'
 
             xml = await resp.text()
             tree = ET.fromstring(xml)
             status = tree.attrib['status']
-            assert status == 'success', f'response status: {status}'
+            assert status == 'success', f'response status: {status}.'
 
             return tree
