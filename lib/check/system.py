@@ -6,7 +6,7 @@ from ..query import query
 CMD = '<show><system><info></info></system></show>'
 
 
-async def check_paloalto(
+async def check_system(
         asset: Asset,
         asset_config: dict,
         config: dict) -> dict:

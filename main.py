@@ -1,11 +1,17 @@
 from libprobe.probe import Probe
-from lib.check.paloalto import check_paloalto
+from lib.check.interface import check_interface
+from lib.check.route import check_route
+from lib.check.session import check_session
+from lib.check.system import check_system
 from lib.version import __version__ as version
 
 
 if __name__ == '__main__':
     checks = {
-        'paloalto': check_paloalto
+        'interface': check_interface,
+        'route': check_route,
+        'session': check_session,
+        'system': check_system,
     }
 
     probe = Probe("paloalto", version, checks)
