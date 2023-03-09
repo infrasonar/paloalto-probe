@@ -1,5 +1,5 @@
 from libprobe.asset import Asset
-from ..utils import datetime_to_timestamp
+from ..utils import datetime_to_timestamp, datefmt_to_timestamp, uptime_seconds
 from ..query import query
 
 
@@ -28,8 +28,8 @@ async def check_system(
             'ipv6-address': item.get('ipv6-address'),
             'ipv6-link-local-address': item.get('ipv6-link-local-address'),
             'mac-address': item.get('mac-address'),
-            'time': item.get('time'),
-            'uptime': item.get('uptime'),
+            'time': datefmt_to_timestamp(item.get('time'), '%c'),
+            'uptime': uptime_seconds(item.get('uptime')),
             'devicename': item.get('devicename'),
             'family': item.get('family'),
             'model': item.get('model'),
