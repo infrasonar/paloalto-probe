@@ -3,7 +3,7 @@ from ..utils import datetime_to_timestamp
 from ..query import query
 
 
-CMD = '<show><system><info></info></system></show>'
+CMD = '<show><system><info/></system></show>'
 
 
 async def check_system(
