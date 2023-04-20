@@ -16,14 +16,14 @@ async def check_route(
     root = await query(asset, asset_config, config, CMD)
     items = [
         {metric.tag: metric.text for metric in item if metric.text is not None}
-        for item in root.find('result')]
+        for item in root.findall('result/entry')]
 
     return {
         'route': [
             {
                 'name': str(i),
                 'destination': item.get('destination'),
-                'flags': item.get('flags', '').strip(),
+                'flags': item['flags'].strip() if 'flags' in item else None,
                 'nexthop': item.get('nexthop'),
                 'route-table': item.get('route-table'),
                 'virtual-router': item.get('virtual-router'),
