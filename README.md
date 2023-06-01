@@ -3,6 +3,7 @@
 
 # InfraSonar PaloAlto Probe
 
+Documentation: https://docs.infrasonar.com/collectors/probes/paloalto/
 ## Environment variable
 
 Variable            | Default                        | Description
