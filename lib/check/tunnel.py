@@ -26,7 +26,7 @@ async def check_tunnel(
         for itm in root.find('result/SSL-VPN')]
 
     return {
-        'gateway': [gateway],
-        'ipsec': [ipsec],
-        'sslvpn': [sslvpn]
+        'gateway': gateway,
+        'ipsec': ipsec,
+        'sslvpn': sslvpn,
     }
