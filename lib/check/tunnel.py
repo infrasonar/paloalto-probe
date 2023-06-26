@@ -20,10 +20,10 @@ async def check_tunnel(
         for itm in root.find('result/GlobalProtect-Gateway')]
     ipsec = [
         {metric.tag: metric.text for metric in itm}
-        for itm in root.find('result/IPSec')]
+        for itm in root.findall('result/IPSec')]
     sslvpn = [
         {metric.tag: metric.text for metric in itm}
-        for itm in root.find('result/SSL-VPN')]
+        for itm in root.findall('result/SSL-VPN')]
 
     return {
         'gateway': gateway,
