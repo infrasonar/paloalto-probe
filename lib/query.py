@@ -14,11 +14,15 @@ async def query(
     if not address:
         address = asset.name
     assert asset_config, 'missing credentials'
+
+    global_protect = check_config.get('global_protect', False)
+    port = ':4443' if global_protect and ':' not in address else ''
+
     api_key = asset_config['secret']
     headers = {
         'X-PAN-KEY': api_key,
     }
-    url = f'https://{address}/api/?type=op&cmd={cmd}'
+    url = f'https://{address}{port}/api/?type=op&cmd={cmd}'
 
     async with aiohttp.ClientSession() as session:
         async with session.post(url, headers=headers, ssl=False) as resp:
