@@ -38,7 +38,7 @@ def to_int(val: Optional[str]) -> Optional[int]:
         assert val is not None
         return int(val)
     except Exception:
-        return
+        return None
 
 
 def to_bool(val: Optional[str]) -> Optional[bool]:

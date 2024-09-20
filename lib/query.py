@@ -27,11 +27,11 @@ async def query(
     async with aiohttp.ClientSession() as session:
         async with session.post(url, headers=headers, ssl=False) as resp:
             assert resp.status // 100 == 2, \
-                f'response status code: {resp.status}. reason: {resp.reason}.'
+                f'response status code: {resp.status}; reason: {resp.reason}'
 
             xml = await resp.text()
             tree = ET.fromstring(xml)
             status = tree.attrib['status']
-            assert status == 'success', f'response status: {status}.'
+            assert status == 'success', f'response status: {status}'
 
             return tree
