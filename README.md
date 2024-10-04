@@ -16,7 +16,7 @@ Variable            | Default                        | Description
 `DRY_RUN`           | _none_                         | Do not run demonized, just return checks and assets specified in the given yaml _(see the [Dry run section](#dry-run) below)_.
 `LOG_LEVEL`         | `warning`                      | Log level (`debug`, `info`, `warning`, `error` or `critical`).
 `LOG_COLORIZED`     | `0`                            | Log using colors (`0`=disabled, `1`=enabled).
-`LOG_FTM`           | `%y%m%d %H:%M:%S`              | Log format prefix.
+`LOG_FMT`           | `%y%m%d %H:%M:%S`              | Log format prefix.
 
 ## API key
 This probe requires an [API key](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/get-your-api-key) which must be placed in the `INFRASONAR_CONF` configuration file. For example:
