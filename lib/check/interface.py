@@ -14,9 +14,10 @@ async def check_interface(
         address = asset.name
 
     root = await query(asset, asset_config, config, CMD)
-    itms = [
+    obj = root.find('result/ifnet')
+    itms = [] if obj is None else [
         {metric.tag: metric.text for metric in itm if metric.text is not None}
-        for itm in root.find('result/ifnet')]
+        for itm in obj]
 
     return {
         'interface': itms

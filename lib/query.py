@@ -1,7 +1,7 @@
 import aiohttp
 import xml.etree.ElementTree as ET
-from urllib.parse import urlencode
 from libprobe.asset import Asset
+from .connector import get_connector
 
 
 async def query(
@@ -24,7 +24,7 @@ async def query(
     }
     url = f'https://{address}{port}/api/?type=op&cmd={cmd}'
 
-    async with aiohttp.ClientSession() as session:
+    async with aiohttp.ClientSession(connector=get_connector()) as session:
         async with session.post(url, headers=headers, ssl=False) as resp:
             assert resp.status // 100 == 2, \
                 f'response status code: {resp.status}; reason: {resp.reason}'
