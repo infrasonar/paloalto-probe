@@ -15,7 +15,8 @@ async def check_system(
         address = asset.name
 
     root = await query(asset, asset_config, config, CMD)
-    item = {metric.tag: metric.text for metric in root.find('result/system')}
+    obj = root.find('result/system')
+    item = {} if obj is None else {metric.tag: metric.text for metric in obj}
     return {
         'system': [{
             'name': 'system',

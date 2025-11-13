@@ -15,7 +15,8 @@ async def check_session(
         address = asset.name
 
     root = await query(asset, asset_config, config, CMD)
-    item = {metric.tag: metric.text for metric in root.find('result')}
+    obj = root.find('result')
+    item = {} if obj is None else {metric.tag: metric.text for metric in obj}
 
     return {
         'session': [{
