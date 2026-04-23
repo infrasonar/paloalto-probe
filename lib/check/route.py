@@ -8,6 +8,7 @@ CMD = '<show><routing><route/></routing></show>'
 
 class CheckRoute(Check):
     key = 'route'
+    unchanged_eol = 14400
 
     @staticmethod
     async def run(asset: Asset, local_config: dict, config: dict) -> dict:

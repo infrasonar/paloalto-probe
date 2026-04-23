@@ -9,6 +9,7 @@ CMD = '<show><system><info/></system></show>'
 
 class CheckSystem(Check):
     key = 'system'
+    unchanged_eol = 0
 
     @staticmethod
     async def run(asset: Asset, local_config: dict, config: dict) -> dict:

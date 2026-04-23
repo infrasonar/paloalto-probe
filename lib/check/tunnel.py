@@ -8,6 +8,7 @@ CMD = '<show><running><tunnel><flow><all/></flow></tunnel></running></show>'
 
 class CheckTunnel(Check):
     key = 'tunnel'
+    unchanged_eol = 14400
 
     @staticmethod
     async def run(asset: Asset, local_config: dict, config: dict) -> dict:
