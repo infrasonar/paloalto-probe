@@ -6,19 +6,19 @@ from .connector import get_connector
 
 async def query(
         asset: Asset,
-        asset_config: dict,
-        check_config: dict,
+        local_config: dict,
+        config: dict,
         cmd: str) -> ET.Element:
 
-    address = check_config.get('address')
+    address = config.get('address')
     if not address:
         address = asset.name
-    assert asset_config, 'missing credentials'
+    assert local_config, 'missing credentials'
 
-    global_protect = check_config.get('global_protect', False)
+    global_protect = config.get('global_protect', False)
     port = ':4443' if global_protect and ':' not in address else ''
 
-    api_key = asset_config['secret']
+    api_key = local_config['secret']
     headers = {
         'X-PAN-KEY': api_key,
     }
